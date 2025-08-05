@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head><meta charset="UTF-8"><title>Rekap Absensi Siswa</title></head>
+<body>
+  <h1>Rekap Absensi Siswa</h1>
+  <button onclick="logout()">Logout</button>
+  <script>
+    const user = JSON.parse(sessionStorage.getItem('loggedInUser'));
+    if(!user || user.role !== 'siswa') {
+      window.location.href = 'login.html';
+    }
+    function logout() {
+      sessionStorage.removeItem('loggedInUser');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
