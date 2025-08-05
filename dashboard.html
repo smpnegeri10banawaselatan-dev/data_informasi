@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Absensi Kegiatan Belajar Tahun 2025/2026</title>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @layer utilities {
+      .bg-navy { background-color: #0f172a; }
+      .text-navy { color: #0f172a; }
+    }
+  </style>
+</head>
+<body class="flex min-h-screen bg-gray-100">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="fixed top-0 left-0 z-40 w-64 h-full bg-navy text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+    <div class="p-6 border-b border-gray-700">
+      <h2 class="text-xl font-bold">Absensi</h2>
+      <p class="text-sm">Tahun 2025/2026</p>
+    </div>
+    <nav class="p-4">
+      <ul class="space-y-2">
+
+        <!-- Absensi PTK -->
+        <li>
+          <button onclick="toggleDropdown('dropdown-ptk', 'icon-ptk')" class="w-full text-left px-4 py-2 rounded hover:bg-blue-700 transition flex justify-between items-center">
+            Absensi PTK
+            <svg id="icon-ptk" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <ul id="dropdown-ptk" class="ml-4 mt-2 space-y-1 hidden">
+            <li>
+              <a href="https://script.google.com/macros/s/AKfycbxLXWlcPAkktKFSeQv_3L1TaKAmwixX20OmHXhMKKiWUCMOP4r6HrCd_kmljFg_l-Ubbw/exec"
+                 target="_blank"
+                 class="block px-4 py-2 rounded hover:bg-blue-700 transition">Absensi Guru Mapel</a>
+            </li>
+            <li>
+              <a href="https://script.google.com/macros/s/PASTE_ABSENSI_HARIAN_LINK/exec"
+                 target="_blank"
+                 class="block px-4 py-2 rounded hover:bg-blue-700 transition">Absensi Harian</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Absensi Siswa -->
+        <li>
+          <button onclick="toggleDropdown('dropdown-siswa', 'icon-siswa')" class="w-full text-left px-4 py-2 rounded hover:bg-blue-700 transition flex justify-between items-center">
+            Absensi Siswa
+            <svg id="icon-siswa" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <ul id="dropdown-siswa" class="ml-4 mt-2 space-y-1 hidden">
+            <li>
+              <a href="https://script.google.com/macros/s/AKfycbza090MrH_2PivnVgu7xMFeOAIwty0tjHvv7wtL4RnxpGCF2OYolabQZM03Xo-GJ28K/exec"
+                 target="_blank"
+                 class="block px-4 py-2 rounded hover:bg-blue-700 transition">Kelas 7</a>
+            </li>
+            <li>
+              <a href="https://script.google.com/macros/s/AKfycbzTe_LiDRgwK-CXg8dEqEGm3cnYQKuA1lCiWb93bYRUkYFyF_tTOxhq9HokXoJuIEaJzA/exec"
+                 target="_blank"
+                 class="block px-4 py-2 rounded hover:bg-blue-700 transition">Kelas 8</a>
+            </li>
+            <li>
+              <a href="https://script.google.com/macros/s/AKfycbw-vijJ1m75FaoICNw8wY-71tbmdsmZJWumIKoLX3SPrY6KOcYde5ENalu47nKWK60UOw/exec"
+                 target="_blank"
+                 class="block px-4 py-2 rounded hover:bg-blue-700 transition">Kelas 9</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Rekap Absen -->
+        <li>
+          <button onclick="toggleDropdown('dropdown-rekap', 'icon-rekap')" class="w-full text-left px-4 py-2 rounded hover:bg-blue-700 transition flex justify-between items-center">
+            Rekap Absen
+            <svg id="icon-rekap" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <ul id="dropdown-rekap" class="ml-4 mt-2 space-y-1 hidden">
+            <li>
+              <a href="lihatabsenguru.html" target="_blank"
+                 class="block px-4 py-2 rounded hover:bg-blue-700 transition">Rekap Guru</a>
+            </li>
+            <li>
+              <a href="lihatabsensiswa.html" target="_blank"
+                 class="block px-4 py-2 rounded hover:bg-blue-700 transition">Rekap Siswa</a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+    <footer class="p-4 text-center text-sm border-t border-gray-700">
+      © 2025 SMPN 10 Banawa Selatan
+    </footer>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="flex flex-col flex-grow min-h-screen md:ml-64">
+    <!-- Top Bar (Mobile Hamburger) -->
+    <header class="bg-navy text-white flex items-center justify-between p-4 md:hidden">
+      <button onclick="toggleSidebar()" class="focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <h1 class="text-lg font-bold">Dashboard Absensi</h1>
+    </header>
+
+    <!-- Page Content -->
+    <main class="p-6">
+      <h1 class="text-3xl font-bold text-navy mb-6">Dashboard Absensi Kegiatan Belajar</h1>
+      <p class="text-gray-600 mb-4">Silakan pilih menu absensi di sidebar untuk mengisi atau melihat data absensi.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Cards konten (bisa ditambahkan) -->
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function toggleDropdown(menuId, iconId) {
+      const menu = document.getElementById(menuId);
+      const icon = document.getElementById(iconId);
+      menu.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('-translate-x-full');
+    }
+  </script>
+
+</body>
+</html>
